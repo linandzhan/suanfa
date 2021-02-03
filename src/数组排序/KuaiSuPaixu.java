@@ -1,5 +1,7 @@
 package 数组排序;
 
+import java.util.Arrays;
+
 /**
  * 快速排序 （以一个数作为中轴，右边比中轴小的放左边，左边比中轴大的放右边）
  *
@@ -34,6 +36,14 @@ public class KuaiSuPaixu {
             arr[l] = arr[r];
             arr[r] = temp;  //l和r两个数交换
         }
+    }
+
+
+    public static void main(String[] args) {
+        int[] arr = {9,7,8,6,4,5,3,2,1,-1,100,20,-2,-23,90};
+//        quickSort(arr,0,arr.length-1);
+        kuaisuSort(0,arr.length-1,arr);
+       System.out.println(Arrays.toString(arr));
     }
 
 
@@ -90,5 +100,56 @@ public class KuaiSuPaixu {
         if (right > l) {
             quickSort(arr, l, right);
         }
+    }
+
+
+    /**
+     * 快速排序回顾。  以一个点为中心，两个指针进行移动，符合就移动靠近中心，不符合就替换。保证左边的比中心小，右边的比中心大。
+     * mid中心，left左边起点， right右边终点，确定范围。arr确定要快排的数组
+     */
+    public static void kuaisuSort(int left,int right,int[] arr) {
+       int l = left; //左指针
+       int r = right; //右指针
+       int mid = (left+right)/2;
+       int temp = 0;
+       while(l<r) {
+           while(arr[l] < arr[mid]) {
+               //符合要求
+               l++;
+           }
+
+           while(arr[r] > arr[mid]) {
+               r--;
+           }
+           if(l>=r) {
+               break;
+           }
+           temp = arr[l];
+           arr[l] = arr[r];
+           arr[r] = temp;   //进行交换
+
+
+
+           if(arr[l] == arr[mid]) {
+               l++;  //交换之后和temp相等，就要往前移一位，因为上面的while是进不去的，这样l就一直不会往前移
+           }
+           if(arr[r] == arr[mid]) {
+               r--;  //同理
+           }
+
+
+       }
+        if(l==r) {
+            l++;
+            r--;
+        }
+
+
+       if(left < r) {
+           kuaisuSort(left,r,arr);
+       }
+       if (right > l) {
+            kuaisuSort(l,right,arr);
+       }
     }
 }
