@@ -19,9 +19,50 @@ public class ChaRuPaiXu {
 
     public static void main(String[] args) {
         int[] arr = {7,6,8,5,9,3,2,6};
-        charu(arr);
+        charu2(arr);
         for (int i : arr) {
             System.out.println(i);
         }
     }
+
+
+
+
+
+
+
+
+
+
+
+        public static void charu2(int[] arr) {
+            for (int i = 0; i < arr.length-1; i++) {
+                int insertVal = arr[i+1];   //待插入值
+                int insertIndex = i;   //待插入的位置
+                while(insertIndex>=0 && insertVal < arr[insertIndex]) {
+                    //只要待插入值小的话，就给insertIndex+1赋值
+                    arr[insertIndex+1] = arr[insertIndex];
+                    insertIndex--;  //继续往前插入
+                }
+                insertIndex++;
+                arr[insertIndex] = insertVal;
+
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
