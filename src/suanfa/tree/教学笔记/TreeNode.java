@@ -1,6 +1,8 @@
 package suanfa.tree.教学笔记;
 
-public class TreeNode {
+import java.util.Comparator;
+
+public class TreeNode implements Comparable {
     int val;
     TreeNode left;
     TreeNode right;
@@ -17,5 +19,13 @@ public class TreeNode {
         return "TreeNode{" +
                 "val=" + val +
                 '}';
+    }
+
+    @Override
+    public int compareTo(Object o1) {
+        TreeNode t1 = (TreeNode)o1;
+
+        //升序
+        return this.val-t1.val;
     }
 }
