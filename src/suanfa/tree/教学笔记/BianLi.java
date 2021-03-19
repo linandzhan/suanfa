@@ -24,6 +24,7 @@ public class BianLi {
         left.left = leftl;
         right.left = rightl;
         leftl.left = leftll;
+
         qianXu(root);
     }
 
